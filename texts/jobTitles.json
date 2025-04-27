@@ -1,0 +1,48 @@
+{
+    "job1": {
+        "title": "Electrician/बिजली कारीगर",
+        "description1": "An electrician installs, maintains, and repairs electrical systems and wiring in residential, commercial, or industrial settings.",
+        "description2": "एक इलेक्ट्रीशियन आवासीय, वाणिज्यिक या औद्योगिक स्थानों में विद्युत प्रणालियों और तारों की स्थापना, रखरखाव और मरम्मत करता है।"
+    },
+    "job2": {
+        "title": "Cleaner/सफ़ाईवाला",
+        "description1": "Cleans and maintains cleanliness in homes, offices, or public spaces.",
+        "description2": "घरों, कार्यालयों या सार्वजनिक स्थानों में सफाई और स्वच्छता बनाए रखता है।"
+    }, 
+    "job3": {
+        "title": "Labour/मजदूर",
+        "description1": "Performs physical tasks and manual work at construction sites or industrial areas.",
+        "description2": "निर्माण स्थलों या औद्योगिक क्षेत्रों में शारीरिक कार्य और मैनुअल काम करता है।"
+    },
+    "job4": {
+        "title": "Driver/चालक",
+        "description1": "Operates vehicles to transport people or goods safely from one place to another.",
+        "description2": "लोगों या सामानों को एक स्थान से दूसरे स्थान पर सुरक्षित रूप से ले जाने के लिए वाहनों का संचालन करता है।"
+    },  
+    "job5": {
+        "title": "Plumber/नल वाला",
+        "description1": "Installs and repairs water supply lines, drainage systems, and related fixtures.",
+        "description2": "जल आपूर्ति लाइनों, नाली प्रणालियों और संबंधित फिटिंग की स्थापना और मरम्मत करता है।"
+    },
+    "job6": {
+        "title": "Servant/नौकर",
+        "description1": " Assists with household chores and daily domestic tasks.",
+        "description2": "घरेलू कामों और दैनिक घरेलू कार्यों में सहायता करता है।"
+    },
+    "job7": {
+        "title": "Mechanic/मिस्त्री",
+        "description1": "Repairs and maintains vehicles or machinery to ensure proper functioning.",
+        "description2": "वाहनों या मशीनरी की मरम्मत और रखरखाव करता है ताकि यह सुनिश्चित हो सके कि वे सही ढंग से काम कर रहे हैं।"
+    },
+    "job8": {
+        "title": "Cheff/बावर्ची",
+        "description1": "Prepares and cooks meals professionally in kitchens or food establishments.",
+        "description2": "पेशेवर रूप से रसोई या खाद्य प्रतिष्ठानों में भोजन तैयार और पकाता है।"
+    },
+    "job9": {
+        "title": "Decor/सजानेवाला",
+        "description1": "Designs and decorates spaces to enhance their appearance and ambiance.",
+        "description2": "उनकी उपस्थिति और वातावरण को बढ़ाने के लिए स्थानों को डिजाइन और सजाता है।"
+    },
+    "job" : "Job Corner"
+}

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>User History</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/userpage/userHistoryUtil.css">
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+
+  <!-- Top Section -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-nb">
+    <div class="container d-flex justify-content-between align-items-center">
+      <a class="navbar-brand" href="#"><u><b>Rojjgar.com</b></u></a>
+      <div class="d-flex align-items-center">
+        <img src="../assets/unnamed1.png" alt="Profile Image" class="rounded-circle me-2" width="40" height="40" style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#profileModal">
+        <h1 id="rg1" class="h5 mb-0 text-white"></h1>
+      </div>
+      <div class="d-flex gap-2">
+        <button type="button" class="btn btn-warning" onclick="goback()">Go Back</button>
+        <button class="btn btn-warning btn-sm">Logout</button> 
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="flex-grow-1 container py-5">
+    <h2 class="text-center mb-4">User History</h2>
+
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered align-middle">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Skill</th>
+            <th scope="col">Jobseeker</th>
+            <th scope="col">Contact Number</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody id="user-history-body">
+          <!-- Data will be populated dynamically -->
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="mt-auto text-white py-4 bg-nb">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-3 mb-3">
+          <h4><u><b>Rojjgar.com</b></u></h4>
+        </div>
+        <div class="col-md-3 mb-3">
+          <ul class="list-unstyled">
+            <li>Home</li>
+            <li>About Us</li>
+            <li>Our Mission</li>
+            <li>Job Corner</li>
+            <li>Reviews</li>
+          </ul>
+        </div>
+        <div class="col-md-3 mb-3">
+          <ul class="list-unstyled">
+            <li><strong>Contacts:</strong></li>
+            <li>+91 6267596219</li>
+            <li>+91 8808722101</li>
+            <li>support@rojjgar.com</li>
+          </ul>
+        </div>
+        <div class="col-md-3 mb-3">
+          <ul class="list-unstyled">
+            <li><strong>Follow Us:</strong></li>
+            <li>Instagram</li>
+            <li>Facebook</li>
+            <li>X</li>
+            <li>Koo</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+ 
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Script to Populate Table -->
+  <script>
+    const responseData = sessionStorage.getItem('responseData');
+    if (responseData) {
+      const responseObject = JSON.parse(responseData);
+      const dates = responseObject.finduser.historyJobDate || [];
+      const skills = responseObject.finduser.historyJobskill || [];
+      const jobseekers = responseObject.finduser.historyJobseeker || [];
+      const contacts = responseObject.finduser.historyJobseekerContact || [];
+
+      const tableBody = document.getElementById('user-history-body');
+
+      if (dates.length > 0) {
+        dates.forEach((date, index) => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>${new Date(date).toLocaleDateString() || 'N/A'}</td>
+            <td>${skills[index] || 'N/A'}</td>
+            <td>${jobseekers[index] || 'N/A'}</td>
+            <td>${contacts[index] || 'N/A'}</td>
+            <td><a href="tel:+91${contacts[index]}" class="btn btn-warning btn-sm text-white">Call</a></td>
+          `;
+          tableBody.appendChild(row);
+        });
+      } else {
+        tableBody.innerHTML = `<tr><td colspan="5" class="text-center">No user history found.</td></tr>`;
+      }
+    } else {
+      document.getElementById('user-history-body').innerHTML = `<tr><td colspan="5" class="text-center">No user history found.</td></tr>`;
+    }
+
+    function goback() {
+      window.location.href = "userPage.html"; // change this to your correct dealer page
+    }
+  </script>
+
+</body>
+</html>

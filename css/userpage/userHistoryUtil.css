@@ -1,0 +1,16 @@
+.bg-nb {
+    background-color: #145c79;
+}
+
+.bg-b{    
+    background:#76b5c5;   
+}
+
+.bg-o{    
+    background-color: rgb(250, 150, 5); 
+}
+
+.bo-b-t {
+    border: 3px solid black;
+    border-radius: 30%;
+}
