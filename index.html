@@ -7,7 +7,18 @@
     <link rel="stylesheet" href="./css/indexUtil.css">
     <link rel="stylesheet" href="./css/indexImagesManager.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+    <script type="module" src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        const token = sessionStorage.getItem('authToken');
+        if(token) {
+            const userType = sessionStorage.getItem('userType');
+            if(userType === 'jobseeker') {
+                window.location.href = './html/jobseekerPage.html';
+            } else if(userType === 'user') {
+                window.location.href = './html/userPage.html';
+            }
+        }
+    </script>
 </head>
 <body>
     <section class="top-section ">
@@ -49,10 +60,13 @@
                                 <label for="userpass2" class="form-label">Password:</label>
                                 <input type="password" id="userpass2" name="userpassword" class="form-control" />
                             </div>
-                            <div class="d-flex justify-content-between">
+                            <div class="d-flex justify-content-between mb-3">
                                 <button class="btn btn-warning" id="f2s" type="submit"></button>
-                                <button type="button" class="btn-close" id="cl-b2" onclick="closeButton()"></button>
                                 <button type="button" class="btn btn-warning" id="cl-r2" onclick="returnButton()">&#8630;</button>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <button type="button" class="btn btn-danger" onclick="userForgotPassword()">Forgot Password</button>
+                                <button type="button" class="btn-close" id="cl-b2" onclick="closeButton()"></button>
                             </div>
                         </form>
             
@@ -73,103 +87,19 @@
                             </div>
                         </form>
             
-                    <!-- Form 4 -->
-                        <form class="dn py-1 px-2" id="f4">
-                            <div class="mb-3">
-                                <label for="username4" class="form-label">Name:</label>
-                                <input type="text" id="username4" name="username" class="form-control" />
-                            </div>
-                            <div class="mb-3">
-                                <label for="usercontact4" class="form-label">Contact:</label>
-                                <input type="tel" id="usercontact4" name="usercontact" class="form-control" />
-                            </div>
-                            <div class="mb-3">
-                                <label for="useremail4" class="form-label">Email:</label>
-                                <input type="email" id="useremail4" name="useremail4" class="form-control" />
-                            </div>
-                            <div class="mb-3">
-                                <label for="userpassc4" class="form-label">Password:</label>
-                                <input type="password" id="userpassc4" name="userpassword4" class="form-control" />
-                            </div>
-                            <div class="mb-3">
-                                <label for="userstate4" class="form-label">State:</label>
-                                <input type="text" id="userstate4" name="userstate4" class="form-control" />
-                            </div>
-                            <div class="mb-3">
-                                <label for="userdist4" class="form-label">District:</label>
-                                <input type="text" id="userdist4" name="userdist" class="form-control" />
-                            </div>
-                            <div class="mb-3">
-                                <label for="userct4" class="form-label">City:</label>
-                                <input type="text" id="userct4" name="userct4" class="form-control" />
-                            </div>
-                            <div class="mb-3">
-                                <label for="userpn4" class="form-label">Pincode:</label>
-                                <input type="text" id="userpn4" name="userpn4" class="form-control" />
-                            </div>
-                            <div class="mb-3">
-                                <label for="usercncl4" class="form-label">Councellor:</label>
-                                <input type="text" id="usercncl4" name="usercncl4" class="form-control" />
-                            </div>
-                            <div class="d-flex justify-content-between">
-                                <button class="btn btn-warning" id="f4s" type="submit"></button>
-                                <button type="button" class="btn-close" id="cl-b4" onclick="closeButton()"></button>
-                            </div>
-                        </form>
-            
                     <!-- Form 5 -->
                         <form class="dn py-4 px-3" id="f5">
                             <div class="mb-3">
                                 <label for="jobseekeremail5" class="form-label">Website ID:</label>
-                                <input type="email" id="jobseekeremail5" name="jobseekeremail" class="form-control" />
+                                <input type="text" id="jobseekeremail5" name="jobseekeremail" class="form-control" />
                             </div>
                             <div class="mb-3">
                                 <label for="jspass5" class="form-label">Password:</label>
                                 <input type="password" id="jspass5" name="seekerpassword" class="form-control" />
                             </div>
                             <div class="d-flex justify-content-between">
-                                <button class="btn btn-warning" id="f5s" type="submit"></button>
+                                <button class="btn btn-warning" id="f5s" type="submit">Login</button>
                                 <button type="button" class="btn-close" id="cl-b5" onclick="closeButton()"></button>
-                            </div>
-                        </form>
-            
-                    <!-- Form 6 -->
-                        <form class="dn py-4 px-3" id="f6">
-                            <div class="mb-3">
-                                <label for="jsname6" class="form-label">Name:</label>
-                                <input type="text" id="jsname6" name="jsname6" class="form-control" />
-                            </div>
-                            <div class="mb-3">
-                                <label for="jscontact6" class="form-label">Contact:</label>
-                                <input type="tel" id="jscontact6" name="jscontact" class="form-control" />
-                            </div>
-                            <div class="mb-3">
-                                <label for="jspassc6" class="form-label">Password:</label>
-                                <input type="password" id="jspassc6" name="jspassword6" class="form-control" />
-                            </div>
-                            <div class="mb-3">
-                                <label for="jsstate6" class="form-label">State:</label>
-                                <input type="text" id="jsstate6" name="jsstate6" class="form-control" />
-                            </div>
-                            <div class="mb-3">
-                                <label for="jsdist6" class="form-label">District:</label>
-                                <input type="text" id="jsdist6" name="jsdist6" class="form-control" />
-                            </div>
-                            <div class="mb-3">
-                                <label for="jsct6" class="form-label">City:</label>
-                                <input type="text" id="jsct6" name="jsct6" class="form-control" />
-                            </div>
-                            <div class="mb-3">
-                                <label for="jspn6" class="form-label">Pincode:</label>
-                                <input type="text" id="jspn6" name="jspn6" class="form-control" />
-                            </div>
-                            <div class="mb-3">
-                                <label for="usercncl4" class="form-label">Councellor:</label>
-                                <input type="text" id="usercncl4" name="usercncl4" class="form-control" />
-                            </div>
-                            <div class="d-flex justify-content-between">
-                                <button class="btn btn-warning" id="f6s" type="submit"></button>
-                                <button type="button" class="btn-close" id="cl-b6" onclick="closeButton()"></button>
                             </div>
                         </form>
                     </div>
@@ -392,5 +322,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="./js/indexTextFetch.js"></script>
     <script src="./js/indexFormOpener.js"></script>
+    <script src="./js/indexFormSubmitter.js"></script>
+    <script src="./js/forgotPassword/userForgot.js"></script>
 </body>
 </html>

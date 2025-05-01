@@ -8,6 +8,17 @@
   <!-- Bootstrap 5 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../css/userpage/userHistoryUtil.css">
+
+  <script>
+    // Check if user is logged in
+    const authToken = sessionStorage.getItem('authToken');
+    const userType = sessionStorage.getItem('userType');
+
+    if (!authToken || userType !== 'user') {
+      alert("You are not authorized to view this page. Please log in.");
+      window.location.href = "../index.html"; // Redirect to login page
+    }
+  </script>
 </head>
 
 <body class="d-flex flex-column min-vh-100">
@@ -22,7 +33,7 @@
       </div>
       <div class="d-flex gap-2">
         <button type="button" class="btn btn-warning" onclick="goback()">Go Back</button>
-        <button class="btn btn-warning btn-sm">Logout</button> 
+        <button class="btn btn-warning btn-sm" onclick="logout()">Logout</button> 
       </div>
     </div>
   </nav>
@@ -93,11 +104,12 @@
   <!-- Script to Populate Table -->
   <script>
     const responseData = sessionStorage.getItem('responseData');
+    console.log(responseData); // For debugging
     if (responseData) {
       const responseObject = JSON.parse(responseData);
-      const dates = responseObject.finduser.historyJobDate || [];
-      const skills = responseObject.finduser.historyJobskill || [];
-      const jobseekers = responseObject.finduser.historyJobseeker || [];
+      const dates = responseObject.finduser.historyJobProvisionDate || [];
+      const skills = responseObject.finduser.historyJobProvisionSkill || [];
+      const jobseekers = responseObject.finduser.historyJobProvidedTo || [];
       const contacts = responseObject.finduser.historyJobseekerContact || [];
 
       const tableBody = document.getElementById('user-history-body');
@@ -123,6 +135,13 @@
 
     function goback() {
       window.location.href = "userPage.html"; // change this to your correct dealer page
+    }
+
+    function logout() {
+      sessionStorage.removeItem('responseData');
+      sessionStorage.removeItem('authToken');
+      sessionStorage.removeItem('userType');
+      window.location.href = "../index.html"; // Redirect to login page
     }
   </script>
 
